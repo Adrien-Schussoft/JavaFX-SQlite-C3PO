@@ -1,0 +1,9 @@
+CREATE DATABASE JavaFX_CRUD;
+USE JavaFX_CRUD;
+
+CREATE TABLE client (
+	cli_id		INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	cli_nom		VARCHAR(255),
+	cli_prenom		VARCHAR(255),
+    cli_ville		VARCHAR(255)
+);

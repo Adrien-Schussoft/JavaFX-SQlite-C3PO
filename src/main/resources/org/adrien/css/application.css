@@ -1,0 +1,57 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.background {
+    -fx-background-color: #b9ceb9;
+    -fx-background-image: url("../../../img/image.jpg");
+    -fx-background-position: center;
+}
+
+.background-form {
+    -fx-background-color: #9e9090;
+}
+
+.btn {
+-fx-font: 16px "Avenir Next";
+-fx-background-color: #E66A6A;
+-fx-background-radius: 5px;
+-fx-text-fill: #093440;
+-fx-padding: 8px;
+-fx-cursor: hand;
+}
+
+.btn3 {
+    -fx-font: 16px "Avenir Next";
+    -fx-background-color: #f7c5f8;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #093440;
+    -fx-padding: 8px;
+    -fx-cursor: hand;
+}
+
+.labelCategory {
+ -fx-border-width: 0 0 1 0;
+ -fx-font-family:"Segoe UI Semibold";
+ -fx-font-size: 16px;
+ -fx-text-fill: #210c0c;
+}
+
+.labelMainTitle {
+    -fx-border-width: 1 1 1 1;
+    -fx-border-radius: 100%;
+    -fx-border-color: #0e110e;
+    -fx-font-family:"Segoe UI Semibold";
+    -fx-font-size: 22px;
+    -fx-text-fill: #093440;
+}
+
+.labelError {
+    -fx-font-family:"Segoe UI Semibold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #ef0707;
+}
+
+.labelDetails {
+    -fx-font-family:"Segoe UI Semibold";
+    -fx-font-size: 18px;
+    -fx-text-fill: #1f1010;
+}
+
