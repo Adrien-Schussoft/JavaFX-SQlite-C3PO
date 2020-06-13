@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.adrien.model.BeansFactory;
 import org.adrien.model.dao.IDao;
 import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
@@ -56,9 +55,9 @@ public class PrimaryController implements Initializable {
     private BorderPane borderPane;
 
     ObservableList<IClient> model = FXCollections.observableArrayList();
-    IDao clientIDao = BeansFactory.getClientDao();
-    IClient client = BeansFactory.getClient();
-    Method methodList = BeansFactory.getList();
+    IDao clientIDao = BeanFactory.getClientDao();
+    IClient client = BeanFactory.getClient();
+    Method methodList = BeanFactory.getList();
     ArrayList<IClient> clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
 
     public PrimaryController() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
@@ -89,10 +88,10 @@ public class PrimaryController implements Initializable {
     /**
      * Save event to save data.
      * @param event
-     * @throws SQLException
+     * @throws ClassNotFoundException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
      */
     @FXML
-    private void save(ActionEvent event) throws SQLException, IllegalAccessException, InvocationTargetException {
+    private void save(ActionEvent event) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException {
         if(!vbox_form.isVisible()){
             clearInputs();
             setVboxVisible();
@@ -102,7 +101,8 @@ public class PrimaryController implements Initializable {
                 client.setNom(text_nom.getText());
                 client.setPrenom(text_prenom.getText());
                 client.setVille(text_ville.getText());
-                clientIDao.insert((Client) client);
+                Method methodInsert = BeanFactory.getInsert();
+                client = (IClient) methodInsert.invoke(clientIDao,client);
                 model.add(client);
                 model.clear();
                 clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
@@ -122,7 +122,7 @@ public class PrimaryController implements Initializable {
      * @throws SQLException
      */
     @FXML
-    private void update(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException {
+    private void update(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
         if(!vbox_form.isVisible()){
             setVboxVisible();
         }else {
@@ -132,7 +132,8 @@ public class PrimaryController implements Initializable {
                 client.setNom(text_nom.getText());
                 client.setPrenom(text_prenom.getText());
                 client.setVille(text_ville.getText());
-                clientIDao.update(client);
+                Method methodUpdate = BeanFactory.getUpdate();
+                client = (IClient) methodUpdate.invoke(clientIDao,client);
                 model.clear();
                 clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
                 model.addAll(clientArrayList);
@@ -150,13 +151,14 @@ public class PrimaryController implements Initializable {
      * @throws SQLException
      */
     @FXML
-    private void delete(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException {
+    private void delete(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
         if(!vbox_form.isVisible()){
             setVboxVisible();
         }else {
             client.setId(lst_clients.getSelectionModel().getSelectedItem().getId());
             System.out.println(client.getId());
-            clientIDao.delete((Client)client);
+            Method methodDelete = BeanFactory.getDelete();
+            client = (IClient) methodDelete.invoke(clientIDao,client);
             model.clear();
             clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
             model.addAll(clientArrayList);
@@ -187,7 +189,7 @@ public class PrimaryController implements Initializable {
     private void getDataModelSelected(){
          lst_clients.setOnMouseClicked(event1 -> {
              try {
-                 Method methodFindById = BeansFactory.getFindById();
+                 Method methodFindById = BeanFactory.getFindById();
                  client = (IClient) methodFindById.invoke(clientIDao,lst_clients.getSelectionModel().getSelectedItem().getId());
              } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | ClassNotFoundException throwables) {
                  throwables.printStackTrace();

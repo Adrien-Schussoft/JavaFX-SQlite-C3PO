@@ -1,7 +1,7 @@
 package org.adrien.model.dao;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.adrien.model.BeansFactory;
+import org.adrien.controller.BeanFactory;
 import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
 import org.adrien.model.utils.DatabaseUtility;
@@ -145,7 +145,7 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
             PreparedStatement pmt = conn.prepareStatement(query);
             rs = pmt.executeQuery();
             while (rs.next()) {
-                client = BeansFactory.getClient();
+                client = BeanFactory.getClient();
                 client.setId(rs.getInt(1));
                 client.setNom(rs.getString(2));
                 client.setPrenom(rs.getString(3));
