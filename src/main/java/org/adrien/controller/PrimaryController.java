@@ -119,10 +119,10 @@ public class PrimaryController implements Initializable {
     /**
      * update event to update data.
      * @param event
-     * @throws SQLException
+     * @throws ClassNotFoundException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
      */
     @FXML
-    private void update(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
+    private void update(ActionEvent event) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
         if(!vbox_form.isVisible()){
             setVboxVisible();
         }else {
@@ -148,10 +148,10 @@ public class PrimaryController implements Initializable {
     /**
      * delete event to delete data.
      * @param event
-     * @throws SQLException
+     * @throws ClassNotFoundException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
      */
     @FXML
-    private void delete(ActionEvent event) throws SQLException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
+    private void delete(ActionEvent event) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
         if(!vbox_form.isVisible()){
             setVboxVisible();
         }else {
