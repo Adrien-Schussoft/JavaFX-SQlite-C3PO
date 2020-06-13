@@ -1,6 +1,7 @@
 package org.adrien.controller;
 
 import org.adrien.model.dao.IDao;
+//import org.adrien.model.entity.Client;
 import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
 
@@ -22,7 +23,7 @@ public class BeanFactory {
     private static IClient clientFactory() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         String className = "org.adrien.model.entity.Client";
         Class cClient = Class.forName(className);
-        IClient client = (Client) cClient.getDeclaredConstructor().newInstance();
+        IClient client = (IClient) cClient.getDeclaredConstructor().newInstance();
         return client;
     }
 
@@ -36,7 +37,7 @@ public class BeanFactory {
     private static Method insert() throws ClassNotFoundException, NoSuchMethodException {
         String className = "org.adrien.model.dao.ClientDAO";
         Class cClientDAO = Class.forName(className);
-        Method methodInsert = cClientDAO.getDeclaredMethod("insert",Client.class) ;
+        Method methodInsert = cClientDAO.getDeclaredMethod("insert", Client.class) ;
         return methodInsert;
     }
 

@@ -91,18 +91,19 @@ public class PrimaryController implements Initializable {
      * @throws ClassNotFoundException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
      */
     @FXML
-    private void save(ActionEvent event) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException {
+    private void save(ActionEvent event) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException, SQLException, InstantiationException {
         if(!vbox_form.isVisible()){
             clearInputs();
             setVboxVisible();
         }else{
             if(isValidInput(text_nom.getText()) && isValidInput(text_prenom.getText()) && isValidInput(text_ville.getText())){
                 label_error.setVisible(false);
+                IClient client = BeanFactory.getClient();
                 client.setNom(text_nom.getText());
                 client.setPrenom(text_prenom.getText());
                 client.setVille(text_ville.getText());
                 Method methodInsert = BeanFactory.getInsert();
-                client = (IClient) methodInsert.invoke(clientIDao,client);
+                client = (Client) methodInsert.invoke(clientIDao,client);
                 model.add(client);
                 model.clear();
                 clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
