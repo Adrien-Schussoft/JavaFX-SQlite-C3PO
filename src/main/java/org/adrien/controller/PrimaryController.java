@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.adrien.model.dao.IDao;
-import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -103,7 +102,7 @@ public class PrimaryController implements Initializable {
                 client.setPrenom(text_prenom.getText());
                 client.setVille(text_ville.getText());
                 Method methodInsert = BeanFactory.getInsert();
-                client = (Client) methodInsert.invoke(clientIDao,client);
+                client = (IClient) methodInsert.invoke(clientIDao,client);
                 model.add(client);
                 model.clear();
                 clientArrayList = (ArrayList<IClient>) methodList.invoke(clientIDao);
