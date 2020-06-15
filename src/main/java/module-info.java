@@ -10,7 +10,6 @@ module org.adrien {
     requires java.desktop;
     requires java.naming;
 
-    //opens org.adrien.model to javafx.base;
     opens org.adrien.view to javafx.fxml;
     opens org.adrien.controller to javafx.base,javafx.fxml;
     opens org.adrien to javafx.fxml;
