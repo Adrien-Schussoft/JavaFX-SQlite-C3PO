@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public interface IDao<T> {
 
-    public void delete(Client id) throws SQLException;
+    public void delete(IClient id) throws SQLException;
     public T findById(int id) throws SQLException;
-    public void insert(Client client) throws SQLException;
+    public void insert(IClient client) throws SQLException;
 
     public  ArrayList<IClient> list() throws SQLException, PropertyVetoException, ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 
 
 
-    public void update(T object) throws SQLException;
+    public void update(IClient client) throws SQLException;
 }

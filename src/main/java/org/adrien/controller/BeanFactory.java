@@ -1,8 +1,6 @@
 package org.adrien.controller;
 
 import org.adrien.model.dao.IDao;
-//import org.adrien.model.entity.Client;
-import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
 
 import java.lang.reflect.InvocationTargetException;
@@ -37,21 +35,21 @@ public class BeanFactory {
     private static Method insert() throws ClassNotFoundException, NoSuchMethodException {
         String className = "org.adrien.model.dao.ClientDAO";
         Class cClientDAO = Class.forName(className);
-        Method methodInsert = cClientDAO.getDeclaredMethod("insert", Client.class) ;
+        Method methodInsert = cClientDAO.getDeclaredMethod("insert", IClient.class) ;
         return methodInsert;
     }
 
     private static Method update() throws ClassNotFoundException, NoSuchMethodException {
         String className = "org.adrien.model.dao.ClientDAO";
         Class cClientDAO = Class.forName(className);
-        Method methodUpdate = cClientDAO.getDeclaredMethod("update",Client.class) ;
+        Method methodUpdate = cClientDAO.getDeclaredMethod("update",IClient.class) ;
         return methodUpdate;
     }
 
     private static Method delete() throws ClassNotFoundException, NoSuchMethodException {
         String className = "org.adrien.model.dao.ClientDAO";
         Class cClientDAO = Class.forName(className);
-        Method methodDelete = cClientDAO.getDeclaredMethod("delete",Client.class) ;
+        Method methodDelete = cClientDAO.getDeclaredMethod("delete",IClient.class) ;
         return methodDelete;
     }
 

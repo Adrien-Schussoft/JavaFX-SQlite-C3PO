@@ -27,7 +27,7 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
      * @param cli
      */
     @Override
-    public void insert(Client cli) throws SQLException {
+    public void insert(IClient cli) throws SQLException {
 
         try {
             conn = dataSource.getConnection();
@@ -50,7 +50,7 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
      * @param cli
      */
     @Override
-    public void update(Client cli) throws SQLException {
+    public void update(IClient cli) throws SQLException {
 
         try{
             conn = dataSource.getConnection();
@@ -74,7 +74,7 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
      * @param cli
      */
     @Override
-    public void delete(Client cli) throws SQLException {
+    public void delete(IClient cli) throws SQLException {
 
         try {
             conn = dataSource.getConnection();
