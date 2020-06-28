@@ -60,7 +60,7 @@
       </VBox>
    </center>
    <right>
-      <VBox fx:id="vbox_form" minWidth="-Infinity" prefHeight="200.0" prefWidth="175.0" styleClass="background-form" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_form" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="200.0" prefWidth="175.0" styleClass="background-form" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="label_details" styleClass="labelDetails" text="Détails" textAlignment="CENTER">
                <VBox.margin>
@@ -87,7 +87,7 @@
             </HBox>
             <HBox prefHeight="71.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="btn_ok" mnemonicParsing="false" onAction="#setVboxUnvisible" styleClass="btn3" text="Ok">
+                  <Button fx:id="btn_ok" mnemonicParsing="false" onAction="#action" styleClass="btn3" text="Ok">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" top="10.0" />
                      </HBox.margin>
