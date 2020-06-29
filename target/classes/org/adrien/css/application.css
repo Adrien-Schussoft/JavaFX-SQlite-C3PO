@@ -3,6 +3,7 @@
     -fx-background-color: #b9ceb9;
     -fx-background-image: url("../../../img/image.jpg");
     -fx-background-position: center;
+    -fx-background-size: stretch;
 }
 
 .background-form {
