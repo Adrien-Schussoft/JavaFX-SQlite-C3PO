@@ -236,7 +236,7 @@ public class PrimaryController implements Initializable {
              try {
                  Method methodFindById = BeanFactory.getFindById();
                  client = (IClient) methodFindById.invoke(clientIDao,lst_clients.getSelectionModel().getSelectedItem().getId());
-             } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | ClassNotFoundException throwables) {
+             } catch (NullPointerException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | ClassNotFoundException throwables) {
                  throwables.printStackTrace();
              }
              text_nom.setText(client.getNom());
