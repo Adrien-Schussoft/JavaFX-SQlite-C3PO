@@ -34,29 +34,23 @@
       </TableView>
    </left>
    <center>
-      <VBox prefHeight="334.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="334.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="btn_sauver" minWidth="-Infinity" mnemonicParsing="false" onAction="#save" styleClass="btn" text="Sauver">
-                     <VBox.margin>
-                        <Insets left="70.0" top="10.0" />
-                     </VBox.margin></Button>
-                  <Button fx:id="btn_update" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#update" styleClass="btn" text="Modifier">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="64.0" top="10.0" />
-                     </VBox.margin></Button>
-                  <Button fx:id="btn_supprimer" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#delete" styleClass="btn" text="Supprimer">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="57.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
+            <Button fx:id="btn_sauver" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#save" styleClass="btn" text="Sauver" textAlignment="CENTER">
                <VBox.margin>
-                  <Insets top="75.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
-            </VBox>
+            </Button>
+            <Button fx:id="btn_update" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#update" styleClass="btn" text="Modifier">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btn_supprimer" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#delete" styleClass="btn" text="Supprimer" />
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
    <right>

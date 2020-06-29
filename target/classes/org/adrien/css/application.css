@@ -12,10 +12,12 @@
 .btn {
 -fx-font: 16px "Avenir Next";
 -fx-background-color: #E66A6A;
--fx-background-radius: 5px;
+-fx-background-radius: 10px;
 -fx-text-fill: #093440;
 -fx-padding: 8px;
 -fx-cursor: hand;
+    -fx-alignment: center;
+
 }
 
 .btn3 {

@@ -85,7 +85,7 @@ public void testUpdate() throws Exception {
     ClientDAO clientDAO = new ClientDAO();
     List<IClient> clientList = clientDAO.list();
     int lastIndex = clientList.get(clientList.size() - 1).getId();
-    Client client = clientDAO.findById(lastIndex);
+    IClient client = clientDAO.findById(lastIndex);
     client.setNom("TestUpdate");
     client.setPrenom("TestUpdate");
     client.setVille("TestUpdate");
