@@ -1,8 +1,6 @@
 package org.adrien.model.dao;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.adrien.controller.BeanFactory;
-import org.adrien.model.entity.Client;
 import org.adrien.model.entity.IClient;
 import org.adrien.model.utils.DatabaseUtility;
 
@@ -14,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ClientDAO extends DatabaseUtility implements IDao<Client> {
+public class ClientDAO extends DatabaseUtility implements IDao<IClient> {
 
     private Connection conn = null;
     ComboPooledDataSource dataSource = this.getDataSource();
@@ -96,10 +94,14 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
      * @return client
      */
     @Override
-    public Client findById(int id) throws SQLException {
+    public IClient findById(int id) throws SQLException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         conn = dataSource.getConnection();
         ResultSet rs = null;
-        IClient iclient = new Client();
+        //IClient iclient = new Client();
+        IClient iclient = null;
+        String className = "org.adrien.model.entity.Client";
+        Class cClient = Class.forName(className);
+        iclient = (IClient) cClient.getDeclaredConstructor().newInstance();
 
         try {
             String query = "SELECT * FROM user WHERE id = (?)";
@@ -127,7 +129,7 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
             conn.rollback();
             e.printStackTrace();
         }
-        return (Client)iclient;
+        return iclient;
     }
 
     /**
@@ -145,7 +147,9 @@ public class ClientDAO extends DatabaseUtility implements IDao<Client> {
             PreparedStatement pmt = conn.prepareStatement(query);
             rs = pmt.executeQuery();
             while (rs.next()) {
-                client = BeanFactory.getClient();
+                String className = "org.adrien.model.entity.Client";
+                Class cClient = Class.forName(className);
+                client = (IClient) cClient.getDeclaredConstructor().newInstance();
                 client.setId(rs.getInt(1));
                 client.setNom(rs.getString(2));
                 client.setPrenom(rs.getString(3));
